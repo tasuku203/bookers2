@@ -1,0 +1,23 @@
+<h2>User info</h2>
+
+
+
+<h2>New Book</h2>
+<%= form_with  model:@book, local: true do |f| %>
+  <h4>title</h4>
+  <%= f.text_field :title %>
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'Create book' %>
+<% end %>
+
+<h2>Book detail</h2>
+  <%= @book.user.name %>
+  <%= @book.title %>
+  <%= @book.body %>
+  <% if @book.user_id == current_user.id %>
+   <p><%= link_to "Edit", edit_book_path %></p>
+   <p><%= link_to "Destroy", book_path,method: :delete %></p>
+   
+  
+  

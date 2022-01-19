@@ -1,0 +1,28 @@
+<h2>User info</h2>
+  <%= image_tag('no_image.jpg') %>
+  <p>name<%= user.name %></p>
+  <p>introduction<%= user.introduction %></p>
+
+
+
+<h2>New Book</h2>
+<%= form_with  model:@book, local: true do |f| %>
+  <h4>title</h4>
+  <%= f.text_field :title %>
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'Create book' %>
+<% end %>
+
+
+<h2>Book</h2>
+  <% @books.each do |book| %>
+    <div>
+      <p><%= image_tag(no_image.jpg) %></p>
+      <%= link_to book_path(book.id) do %>
+        <p>Title <%= book.title %></p>
+      <% end %>
+      <p>Opinion <%= book.body %></p>
+    </div>
+  <% end %>
+
