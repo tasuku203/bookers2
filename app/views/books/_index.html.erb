@@ -1,0 +1,44 @@
+
+<div class="col-md-3">
+  <h2>User info</h2>
+  <%= image_tag('no_image.jpg') %>
+  <table class="table">
+    <tbody>
+
+      <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+  <% if user.id == current_user.id %>
+  <div class="row">
+    <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_50868" href="/users/id/edit"></a>
+  </div>
+  <% end %>
+  <h2 class="mt-3">New Book</h2>
+  <% if book.errors.any? %>
+    <%= book.errors.count %>errors exist!
+    <% book.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="IlDWk/04CdVCc+Up17Bjr7lVnQrp8D9evqA5zIBwgMz63c7Ldl42TZwjFVm8LJUG+IqL7mafAwCzQXq6KHTmtQ==">
+    <div class="form-group">
+      <label for="book_title">Title</label>
+      <input class="form-control book_title" type="text" name="book[title]" id="book_title">
+    </div>
+    <div class="form-group">
+      <label for="book_opinion">Opinion</label>
+      <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
+    </div>
+  </form>
+</div>
+

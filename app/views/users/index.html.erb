@@ -1,0 +1,12 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+  <%= render 'books/index', book: @book, user: @user %>
+  <div class="col-md-8">
+  <h2>Users</h2>
+  <% @users.each do |user| %>
+    <p>image<%= user.profile_image %></p>
+    <p>name<%= user.name %></p>
+    <%= link_to "show", user_path(user.id) %>
+  <% end %>
+  </div>
+</div>

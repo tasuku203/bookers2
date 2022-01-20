@@ -1,0 +1,17 @@
+
+
+<div class="container px-5 px-sm-0">
+ 
+  <div class="row">
+    <%= render 'books/index', book: @book, user: @user %>
+
+    <h2>Books</h2>
+    <% @books.each do |book| %>
+      <%= link_to book_path(book.id) do %>
+        <p>Title <%= book.title %></p>
+      <% end %>
+      <p>opinion <%= book.body %></p>
+    <% end %>
+  </div>
+</div>
+
