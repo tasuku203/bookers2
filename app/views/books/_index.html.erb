@@ -4,7 +4,6 @@
   <%= image_tag('no_image.jpg') %>
   <table class="table">
     <tbody>
-
       <tr>
         <th>name</th>
         <th><%= user.name %></th>
@@ -17,7 +16,7 @@
   </table>
   <% if user.id == current_user.id %>
   <div class="row">
-    <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_50868" href="/users/id/edit"></a>
+
   </div>
   <% end %>
   <h2 class="mt-3">New Book</h2>
@@ -27,6 +26,7 @@
       <%= message %>
     <% end %>
   <% end %>
+
   <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="IlDWk/04CdVCc+Up17Bjr7lVnQrp8D9evqA5zIBwgMz63c7Ldl42TZwjFVm8LJUG+IqL7mafAwCzQXq6KHTmtQ==">
     <div class="form-group">
       <label for="book_title">Title</label>
