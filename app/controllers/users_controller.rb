@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
+
+
+    before_action :authenticate_user!
+    
+
+
+
     def create
         @book = Book.new(books_params)
         @book.user_id = current_user.id
-        @book.save
-        redirect_to book_path
+        if @book.save
+            flash[:notice] = "successfully"
+            redirect_to book_path
+        end
     end
 
     def index
@@ -14,7 +23,8 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @books = Book.all
+        @books = @user.books
+        @book = Book.new
     end
 
     def edit
@@ -27,6 +37,7 @@ class UsersController < ApplicationController
             flash[:notice] = "successfully"
             redirect_to user_path(@user.id)
         else
+            flash.now[:danger] = "error!"
             render :edit
         end
     end
@@ -34,6 +45,11 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:mame,:introduction,:profile_image)
+        params.require(:user).permit(:name,:introduction,:profile_image)
+    end
+
+    def correct_user
+        @user = User.find(params[:id])
+        redirect_to user_path(current_user.id) unless @user == current_user
     end
 end

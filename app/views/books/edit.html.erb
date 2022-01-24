@@ -1,4 +1,4 @@
-<h1>Editing book</h1>
+<h1>Editing Book</h1>
 <% if @book.errors.any? %>
     <%= @book.errors.count %>errors exist!
     <% @book.errors.full_messages.each do |message| %>
@@ -11,12 +11,12 @@
   <%= f.text_field :title %>
   <h4>Opinion</h4>
   <%= f.text_area :body %>
-  <%= f.submit 'Update book' %>
+  <%= f.submit 'Update Book' %>
 <% end %>
  <li>
-   <%= link_to 'show',book_path(@book.id) %>
+   <%= link_to 'Show',book_path(@book.id) %>
  </li>
  <li>
-   <%= link_to 'back', books_path %>
+   <%= link_to 'Back', books_path %>
  </li>
 

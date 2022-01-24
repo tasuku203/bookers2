@@ -1,6 +1,6 @@
 <h1>User info</h1>
   <% if @user.errors.any? %>
-    <%= @user.errors.count %>errors exist
+    <%= @user.errors.count %>errors exist!!
     <%= @user.errors.full_messages.each do |message| %>
       <%= message %>
     <% end %>
@@ -9,9 +9,8 @@
 
   <%= form_with model:@user, local:true do |f| %>
   <h4>Name</h4>
-  <%= f.text_field :user %>
+  <%= f.text_field :name %>
 
-  <%= attachment_image_tag @user, :profile_image, :fill, 60,60,fallback:"no_image.jpg" %>
   <h4>Image</h4>
   <%= f.attachment_field :profile_image, placeholder:'Create box' %>
 
